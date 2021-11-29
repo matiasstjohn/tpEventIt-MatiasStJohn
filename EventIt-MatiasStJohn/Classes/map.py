@@ -2,11 +2,11 @@ import folium, pandas, webbrowser
 
 def enter_map():
     mapaBsAs = folium.Map(location=[-36.233913, -60.645759], zoom_start=7)
-    marker_csv = pandas.read_csv('Datasets\Zone_markers.csv')
+    marker_csv = pandas.read_csv('..\\Datasets\Zone_markers.csv')
     
     for i in range(0, len(marker_csv)):
         def info():
-            with open('Datasets\\Events_database.csv', 'r') as events:
+            with open('..\\Datasets\\Events_database.csv', 'r') as events:
                 info = ""
                 for line in events:
                     row = line.strip().split(",")
@@ -25,7 +25,7 @@ def enter_map():
     webbrowser.open('mapa.html')
 
 def seleccionarZona():
-    with open('Datasets\\Zone_markers.csv', 'r', newline='') as tipos:
+    with open('..\\Datasets\\Zone_markers.csv', 'r', newline='') as tipos:
         i = 0
         for line in tipos:
             if i != 0:
@@ -33,7 +33,7 @@ def seleccionarZona():
                 print(f"{i}. {row[0]}")
             i += 1
     try:
-        with open('Datasets\\Zone_markers.csv', 'r', newline='') as tipos: 
+        with open('..\\Datasets\\Zone_markers.csv', 'r', newline='') as tipos:
             seleccion = input("\nNúmero de la zona que quiere elegir: ")
             sel = int(seleccion)
             stop = 0
@@ -45,12 +45,3 @@ def seleccionarZona():
     except:
         print("debe ingresar un número que este dentro del rango")
         seleccionarZona()
-
-
-# class mapa:
-#     #algun tipo de grid o matriz con coordenadas
-#     pass
-
-# class zona:
-#     #cada zona es tiene sus propias coordenadas en el mapa
-#     pass

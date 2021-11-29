@@ -66,7 +66,7 @@ class evento:
         
         
 def listaPicos():
-    with open("Datasets\Evento_pico.csv", "r", newline="") as pico:
+    with open("..\\Datasets\Evento_pico.csv", "r", newline="") as pico:
         eventos = []
         for line in pico:
             row = line.strip().split(',')
@@ -80,7 +80,7 @@ def checkPico(event):
     picos = listaPicos()
     if event > picos[0]:
         print(f"**** HAY UN NUEVO PICO DE {event.gente} PERSONAS ****")
-        with open("Datasets\Evento_pico.csv", "a", newline="") as pico:
+        with open("..\\Datasets\Evento_pico.csv", "a", newline="") as pico:
             pico_writer = writer(pico, lineterminator="\r")
             texto = [event.tipo,event.zona,event.desc,event.gente]
             pico_writer.writerow(texto)

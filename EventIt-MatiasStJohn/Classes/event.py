@@ -17,7 +17,7 @@ def addPeople():
     try:
         i = 0
         while i in range(cant):
-            with open('Datasets\\User_database.csv', 'r', newline='') as user_database:
+            with open('..\\Datasets\\User_database.csv', 'r', newline='') as user_database:
                 user = input("Ingresar CUIL o telefono de usuario que forme parte del evento: ")
                 found = False
                 for line in user_database:
@@ -40,14 +40,14 @@ def addPeople():
     return people_text
        
 def seleccionarTiposEvent():
-    with open('Datasets\\Event_types.csv', 'r', newline='') as tipos:
+    with open('..\\Datasets\\Event_types.csv', 'r', newline='') as tipos:
         i = 0
         for line in tipos:
             row = line.strip().split(",")
             print(f"{i}. {row}")
             i += 1
     try:
-        with open('Datasets\\Event_types.csv', 'r', newline = '') as tipos:
+        with open('..\\Datasets\\Event_types.csv', 'r', newline = '') as tipos:
             seleccion = input("\nNúmero del tipo de evento que quiere elegir: ")
             sel = int(seleccion)
             stop = 0
@@ -61,14 +61,14 @@ def seleccionarTiposEvent():
         seleccionarTiposEvent()
 
 def getZone():
-    with open('Datasets\\CurrentUser.csv', 'r', newline='') as user:
+    with open('..\\Datasets\\CurrentUser.csv', 'r', newline='') as user:
         i = 0
         for line in user:
             if i == 0:
                 row = line.strip().split(",")
                 cuil = row[0]
             i += 1
-        with open('Datasets\\Anses_dataset.csv', 'r', newline='') as user_data:
+        with open('..\\Datasets\\Anses_dataset.csv', 'r', newline='') as user_data:
             for line in user_data:
                 row = line.strip().split(",")
                 if row[0] == cuil:
@@ -80,7 +80,7 @@ def requestEvent():
     gente = addPeople()
     info = input("Describir el evento: ")
 
-    with open('Datasets\\Events_requests.csv', 'a', newline='') as reqs:
+    with open('..\\Datasets\\Events_requests.csv', 'a', newline='') as reqs:
         event_data = [tipo, zona, info]
         for people in gente:
             event_data.append(people.strip())

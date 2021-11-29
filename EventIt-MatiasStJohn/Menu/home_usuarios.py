@@ -4,7 +4,7 @@ from Menu.home_admins import InterfazAdmin
 class InterfazUser:
     @property
     def currentUser(self):
-        with open('Datasets\\CurrentUser.csv', 'r', newline='') as user:
+        with open('..\\Datasets\\CurrentUser.csv', 'r', newline='') as user:
             for line in user:
                 row = line.strip().split(",")
                 usuario = row[2]
@@ -12,7 +12,7 @@ class InterfazUser:
     
     @property
     def currentCuil(self):
-        with open('Datasets\\CurrentUser.csv', 'r', newline='') as user:
+        with open('..\\Datasets\\CurrentUser.csv', 'r', newline='') as user:
             for line in user:
                 row = line.strip().split(",")
                 usuario = row[0]
@@ -24,7 +24,7 @@ class InterfazUser:
             try:
                 other_user = input("Escribir el CUIL o celular al que quiere agregar como amigo: ")
                 found = False
-                with open('Datasets\\User_database.csv', 'r', newline='') as user_database:
+                with open('..\\Datasets\\User_database.csv', 'r', newline='') as user_database:
                     for line in user_database:
                         row = line.strip().split(",")
                         if row[0] == other_user or row[1] == other_user:
@@ -48,7 +48,7 @@ class InterfazUser:
                 print("Usuario no encontrado: ")
     
     def check_requests(self):
-        with open('Datasets\\CurrentUser.csv', 'r', newline='') as user_data:  # CAMBIAR PATH
+        with open('..\\Datasets\\CurrentUser.csv', 'r', newline='') as user_data:  # CAMBIAR PATH
             i = 0
             for line in user_data:
                 row = line.strip().split(",")
@@ -84,7 +84,7 @@ class InterfazUser:
                                         rejected_data.append(row3)
 
                                         
-                                with open('Datasets\\CurrentUser.csv', 'w', newline = '') as current_user:
+                                with open('..\\Datasets\\CurrentUser.csv', 'w', newline = '') as current_user:
                                     data_writer = writer(current_user, lineterminator = '\r')
                                     for data in copied_data:
                                         data_writer.writerow(data)
@@ -101,7 +101,7 @@ class InterfazUser:
                                 count += 1
                             elif action.lower() == "y":
 
-                                with open ('Datasets\\CurrentUser.csv', 'r', newline = '') as current_user:
+                                with open ('..\\Datasets\\CurrentUser.csv', 'r', newline = '') as current_user:
                                     copied_data = list()
                                     for line in current_user:
                                         row2 = line.strip().split(',')
@@ -112,7 +112,7 @@ class InterfazUser:
                                             del row2[row_index]
                                         
                                         copied_data.append(row2)
-                                with open('Datasets\\CurrentUser.csv', 'w', newline = '') as current_user:
+                                with open('..\\Datasets\\CurrentUser.csv', 'w', newline = '') as current_user:
                                     data_writer = writer(current_user, lineterminator = '\r')
                                     for data in copied_data:
                                         data_writer.writerow(data)

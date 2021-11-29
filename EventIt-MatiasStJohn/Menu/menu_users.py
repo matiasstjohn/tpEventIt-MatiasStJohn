@@ -23,7 +23,7 @@ class UserMenu:
 
 
     def User_eventMenu(self):
-        print(f'\n\n\n\nEvent menu.')
+        print(f'\n\nEvent menu.')
         running = True
         while running:
             try:
@@ -40,7 +40,7 @@ class UserMenu:
                 print('Please enter a valid number.')
 
     def User_contactMenu(self):
-        print(f'\n\n\n\nContact menu.')
+        print(f'\n\nContact menu.')
         running = True
         while running:
             try:

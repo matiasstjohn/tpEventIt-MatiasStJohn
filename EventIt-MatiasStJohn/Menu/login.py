@@ -7,6 +7,7 @@ from Classes.event import seleccionarTiposEvent
 from Classes.sensor import Sensor
 from Menu.menu_sensor import senMenu
 from Menu.menu_users import menu_user
+
 class Start:
     def checkCuil(self):
         check = False
@@ -15,7 +16,7 @@ class Start:
             anses_check = Start.checkCuilDatabase(self, cuil)
             if anses_check:
                 try:
-                    with open('Datasets\\User_database.csv', 'r') as user_database:
+                    with open('..\\Datasets\\User_database.csv', 'r') as user_database:
                         for i in user_database:
                             row = i.strip().split(',')
                             if cuil == row[0]:
@@ -32,7 +33,7 @@ class Start:
 
     def checkCuilDatabase(self, cuil):
         valid_cuil = False
-        with open('Datasets\\Anses_dataset.csv', 'r') as anses_database:
+        with open('..\\Datasets\\Anses_dataset.csv', 'r') as anses_database:
             for line in anses_database:
                 row = line.strip().split(',')
                 if cuil == row[0]:
@@ -43,11 +44,11 @@ class Start:
 
 
 
-    def checkPhoneNumber(self):                                
+    def checkPhoneNumber(self):
         check = False
         while check == False:
             try:
-                with open('Datasets\\User_database.csv', 'r') as user_database:
+                with open('..\\Datasets\\User_database.csv', 'r') as user_database:
                     phone_number = input('Please enter your phone number: ')    
                     for line in user_database:
                         row = line.strip().split(',')
@@ -66,7 +67,7 @@ class Start:
         check = False
         while check == False:
             try:
-                with open('Datasets\\User_database.csv', 'r') as user_database:
+                with open('..\\Datasets\\User_database.csv', 'r') as user_database:
                         username = input('Enter your username: ')
                         for line in user_database:
                             row = line.strip().split(',')
@@ -97,8 +98,8 @@ class Start:
         phone_number = Start.checkPhoneNumber(self)
         username = Start.checkUsername(self)
         password = Start.checkPassword(self) 
-        with open('Datasets\\User_database.csv', 'a', newline='') as user_database:
-            user = Ciudadano(username, password, cuil, phone_number) #para poder acceder a notifs, funciones, etc
+        with open('..\\Datasets\\User_database.csv', 'a', newline='') as user_database:
+            user = Ciudadano(username, password, cuil, phone_number)
             user_data = [cuil, phone_number, user.username, user.password, 'Unblocked','0']
             data_writer = writer(user_database, lineterminator='\r')
             data_writer.writerow(user_data)
@@ -115,7 +116,7 @@ class Start:
         while not log:
             username = input('Enter Username: ').rstrip()
             password = input('Enter Password: ')
-            with open('Datasets\\User_database.csv', 'r') as database:
+            with open('..\\Datasets\\User_database.csv', 'r') as database:
                 try:
                     for line in database:
                         row = line.strip().split(',')
@@ -151,7 +152,7 @@ class Start:
         while not log:
             username = input('Enter username: ').rstrip()
             password = input('Enter password: ')
-            with open('Datasets\\Admin_dataset.csv', 'r') as database:
+            with open('..\\Datasets\\Admin_dataset.csv', 'r') as database:
                 try:
                     for line in database:
                         row = line.strip().split(',')
@@ -159,7 +160,6 @@ class Start:
                             if password == row[1].strip():
                                 menu_admin.Admin_mainMenu()
                                 log = True
-                                #algo que te mande a interfaz admin
                     if not log:
                         raise ValueError
                 except ValueError:

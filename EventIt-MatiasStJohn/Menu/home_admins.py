@@ -3,7 +3,7 @@ from Classes.sensor import checkPico, evento
 
 class InterfazAdmin:
     def checkIfBlocked(self, username):
-        with open('Datasets\\User_database.csv', 'r', newline='') as user_database:
+        with open('..\\Datasets\\User_database.csv', 'r', newline='') as user_database:
             try:
                 found = False
                 for line in user_database:
@@ -22,7 +22,7 @@ class InterfazAdmin:
     def blockUser(self):
         try:
             username = input("Ingresar nombre del usuario al cual quiere bloquear: ")
-            with open('Datasets\\User_database.csv', 'r', newline='') as user_database:
+            with open('..\\Datasets\\User_database.csv', 'r', newline='') as user_database:
                 found = False
                 user_data = list()
                 for line in user_database:
@@ -48,7 +48,7 @@ class InterfazAdmin:
                             print("User already blocked!")
                     user_data.append(row)
             if found:
-                with open('Datasets\\User_database.csv', 'w', newline = '') as user_database:
+                with open('..\\Datasets\\User_database.csv', 'w', newline = '') as user_database:
                     data_writer = writer(user_database, lineterminator = '\r')
                     for data in user_data:
                         data_writer.writerow(data)
@@ -73,14 +73,14 @@ class InterfazAdmin:
                 data_writer.writerow(data)
 
 
-            with open('Datasets\\User_database.csv', 'r', newline='') as user_database:
+            with open('..\\Datasets\\User_database.csv', 'r', newline='') as user_database:
                 user_data = list()
                 for line in user_database:
                     row = line.strip().split(',')
                     if cuil == row[0].strip():
                         row[4] = 'Blocked'
                     user_data.append(row)
-            with open('Datasets\\User_database.csv', 'w', newline = '') as user_database:
+            with open('..\\Datasets\\User_database.csv', 'w', newline = '') as user_database:
                 data_writer = writer(user_database, lineterminator = '\r')
                 for data in user_data:
                     data_writer.writerow(data)
@@ -90,7 +90,7 @@ class InterfazAdmin:
             username = input("Ingresar nombre del usuario al cual quiere desbloquear: ")
             found = False
             user_data = list()
-            with open('Datasets\\User_database.csv', 'r', newline='') as user_database:
+            with open('..\\Datasets\\User_database.csv', 'r', newline='') as user_database:
                 for line in user_database:
                     row = line.strip().split(',')
                     if username == row[2].strip():
@@ -118,7 +118,7 @@ class InterfazAdmin:
                     user_data.append(row)
                     
             if found:
-                with open('Datasets\\User_database.csv', 'w', newline= '') as user_database:
+                with open('..\\Datasets\\User_database.csv', 'w', newline= '') as user_database:
                     data_writer = writer(user_database, lineterminator = '\r')
                     for data in user_data:
                         data_writer.writerow(data)
@@ -131,7 +131,7 @@ class InterfazAdmin:
 
 
     def CheckAdmin(self):
-        with open('Datasets\\Admin_dataset.csv', 'r') as user_database:
+        with open('..\\Datasets\\Admin_dataset.csv', 'r') as user_database:
             check = False
             while check == False:
                 username = input('Enter new username: ')
@@ -159,14 +159,14 @@ class InterfazAdmin:
     def addAdmin(self):
         username = InterfazAdmin.CheckAdmin(self)
         password = InterfazAdmin.CheckPassword(self)
-        with open('Datasets\\Admin_dataset.csv', 'a', newline='') as adm_database:
+        with open('..\\Datasets\\Admin_dataset.csv', 'a', newline='') as adm_database:
             adm_data = [username, password]
             data_writer = writer(adm_database, lineterminator='\r')
             data_writer.writerow(adm_data)
 
     def banAdmin(self):
         user = input("Ingresar usuario del admin que quiere kickear: ")
-        with open('Datasets\\Admin_dataset.csv', 'r', newline='') as adm_database:
+        with open('..\\Datasets\\Admin_dataset.csv', 'r', newline='') as adm_database:
             try:
                 found = False
                 file_list = list()
@@ -178,7 +178,7 @@ class InterfazAdmin:
                     else:
                         file_list.append(row)
 
-                with open('Datasets\\Admin_dataset.csv', 'w', newline= '') as adm_database:
+                with open('..\\Datasets\\Admin_dataset.csv', 'w', newline= '') as adm_database:
                     data_writer = writer(adm_database, lineterminator = '\r')
                     for admin_data in file_list:
                         data_writer.writerow(admin_data)
@@ -191,7 +191,7 @@ class InterfazAdmin:
 
 
     def printRequests(self):
-        with open('Datasets\\Events_requests.csv', 'r', newline='') as rqts:
+        with open('..\\Datasets\\Events_requests.csv', 'r', newline='') as rqts:
             try:
                 i = 0
                 print("\nEventos a ser aceptados:\n")
@@ -209,7 +209,7 @@ class InterfazAdmin:
         numero = self.printRequests()
         try:
             acc = int(numero)
-            with open('Datasets\\Events_requests.csv', 'r', newline='') as rqts:
+            with open('..\\Datasets\\Events_requests.csv', 'r', newline='') as rqts:
                 num = 0
                 request_data = list()
                 for line in rqts:
@@ -217,14 +217,14 @@ class InterfazAdmin:
                     if num == acc:
                         event = evento(row[0], row[1], row[2], (len(row) - 3))
                         checkPico(event)
-                        with open('Datasets\\Events_database.csv', 'a', newline='') as events:
+                        with open('..\\Datasets\\Events_database.csv', 'a', newline='') as events:
                             writer_eventos = writer(events, lineterminator="\r")
                             writer_eventos.writerow(row)
                         num += 1
                     else:
                         num += 1
                         request_data.append(row)
-            with open('Datasets\\Events_requests.csv', 'w', newline = '') as requests:
+            with open('..\\Datasets\\Events_requests.csv', 'w', newline = '') as requests:
                 data_writer = writer(requests, lineterminator = '\r')
                 for data in request_data:
                     data_writer.writerow(data)
@@ -236,7 +236,7 @@ class InterfazAdmin:
         numero = self.printRequests()
         try:
             acc = int(numero)
-            with open('Datasets\\Events_requests.csv', 'r', newline='') as rqts:
+            with open('..\\Datasets\\Events_requests.csv', 'r', newline='') as rqts:
                 num = 0
                 request_data = list()
                 for line in rqts:
@@ -245,7 +245,7 @@ class InterfazAdmin:
                         request_data.append(row)
                     num += 1
             
-            with open('Datasets\\Events_requests.csv', 'w', newline = '') as requests:
+            with open('..\\Datasets\\Events_requests.csv', 'w', newline = '') as requests:
                 data_writer = writer(requests, lineterminator = '\r')
                 for data in request_data:
                     data_writer.writerow(data)
