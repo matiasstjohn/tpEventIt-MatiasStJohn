@@ -1,5 +1,6 @@
 from Menu.home_admins import intAdmin
 
+
 class AdminMenu:
 
     def Admin_mainMenu(self):
@@ -7,7 +8,8 @@ class AdminMenu:
         running = True
         while running:
             try:
-                print('\n\nPlease select a menu: \n1.- User managment \n2.- Event management \n3.- Admin management \n4.- Exit Program')
+                print(
+                    '\n\nPlease select a menu: \n1.- User managment \n2.- Event management \n3.- Admin management \n4.- Exit Program')
                 menu_input = input('Enter menu number: ')
                 if menu_input == '1':
                     AdminMenu.Admin_userMenu(self)
@@ -23,13 +25,12 @@ class AdminMenu:
             except ValueError:
                 print('Please enter a valid number.\n\n')
 
-        
     def Admin_userMenu(self):
-        print('\n\n\n\nUser managment.')
+        print('\n\nUser managment.')
         user_menu = True
         while user_menu:
             try:
-                print('\n\nPlease select an action: \n1.- Unblock user \n2.- Block user \n3.- Return to main menu')
+                print('\n\nPlease select an action: \n1.-Unblock user \n2.-Block user \n3.-Return to main menu')
                 menu_input = input('Enter action number: ')
                 if menu_input == '1':
                     intAdmin.unblockUser()
@@ -40,14 +41,14 @@ class AdminMenu:
                 else:
                     raise ValueError
             except ValueError:
-                print('Please enter a valid number.\n\n')
+                print('Please enter a valid number.\n')
 
     def Admin_eventMenu(self):
-        print('\n\n\n\nEvent managment.')
+        print('\n\nEvent managment.')
         event_menu = True
         while event_menu:
             try:
-                print('\n\nPlease select an action: \n1.- Accept Event \n2.- Deny Event \n3.- Return to main menu')
+                print('\nPlease select an action: \n1.-Accept Event \n2.-Deny Event \n3.-Return to main menu')
                 menu_input = input('Please enter action number: ')
                 if menu_input == '1':
                     intAdmin.acceptEventRequest()
@@ -58,14 +59,14 @@ class AdminMenu:
                 else:
                     raise ValueError
             except ValueError:
-                print('Please enter a valid number.\n\n')
+                print('Please enter a valid number.\n')
 
     def Admin_adminMenu(self):
-        print('\n\n\n\nAdmin management.')
+        print('\n\nAdmin management.')
         admin_menu = True
         while admin_menu:
             try:
-                print('\n\nPlease select an action: \n1.- Add administrator \n2.- Ban administrator \n3.- Return to main menu')
+                print('\nPlease select an action: \n1.-Add administrator \n2.-Ban administrator \n3.-Return to main menu')
                 menu_input = input('Please enter action number: ')
                 if menu_input == '1':
                     intAdmin.addAdmin()
@@ -76,8 +77,7 @@ class AdminMenu:
                 else:
                     raise ValueError
             except ValueError:
-                print('Please enter a valid number.\n\n')
-
+                print('Please enter a valid number.\n')
 
 
 menu_admin = AdminMenu()

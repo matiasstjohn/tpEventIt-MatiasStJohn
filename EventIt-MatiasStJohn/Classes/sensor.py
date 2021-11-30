@@ -7,7 +7,7 @@ class Sensor:
 
     def getInfo(self):
         print("Current events in this zone: \n")
-        with open('Datasets\\Events_database.csv', 'r', newline='') as events:
+        with open('..\\Datasets\\Events_database.csv', 'r', newline='') as events:
             i = 0
             for line in events:
                 row = line.strip().split(",")
@@ -16,13 +16,13 @@ class Sensor:
                     i += 1
                     
     def top3Zona(self):
-        with open('Datasets\\Events_database.csv', 'r', newline='') as events:
+        with open('..\\Datasets\\Events_database.csv', 'r', newline='') as events:
             overall_values = []
             lista_final = []
             zone_events = list()
             for line in events:
                 row = line.strip().split(",")
-                if self.zona == row[1]:
+                if self.zona == row[0]:
                     cantPersonas = len(row) - 3
                     overall_values.append(cantPersonas)
                     zone_events.append(row)
@@ -53,14 +53,19 @@ class evento:
         
     def __lt__(self, other):
         return self.gente < other.gente
+
     def __le__(self, other):
         return self.gente <= other.gente
+
     def __eq__(self, other):
         return self.gente == other.gente
+
     def __ne__(self, other):
         return self.gente != other.gente
+
     def __gt__(self, other):
         return self.gente > other.gente
+
     def __ge__(self, other):
         return self.gente >= other.gente
         
@@ -84,7 +89,7 @@ def checkPico(event):
             pico_writer = writer(pico, lineterminator="\r")
             texto = [event.tipo,event.zona,event.desc,event.gente]
             pico_writer.writerow(texto)
-            
+
 def currentPico():
     picos = listaPicos()
     pico = picos[0]

@@ -7,6 +7,7 @@ class Usuario(ABC):
         self.username = username
         self.notificaciones = []
 
+
 class Ciudadano(Usuario):
     def __init__(self, username, password, CUIL, telefono):
         Usuario.__init__(self, username, password)
@@ -16,7 +17,7 @@ class Ciudadano(Usuario):
         self.NoOfTimesRejected = 0
         self.pendingRequests = []
         self.BlockedState = False
-    
+
     def __repr__(self):
         return f"{self.username} - Tel: {self.telefono} - CUIL: {self.cuil}"
         

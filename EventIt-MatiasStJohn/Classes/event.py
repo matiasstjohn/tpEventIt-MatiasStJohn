@@ -10,7 +10,7 @@ def checkCantidad():
     except ValueError:
         print("Error. Utilizar números positivos")
         checkCantidad()
-            
+
 def addPeople():
     cant = int(checkCantidad())
     people = []
@@ -38,7 +38,7 @@ def addPeople():
         people_text.append(str(people[count]))
         count += 1
     return people_text
-       
+
 def seleccionarTiposEvent():
     with open('..\\Datasets\\Event_types.csv', 'r', newline='') as tipos:
         i = 0
@@ -73,7 +73,7 @@ def getZone():
                 row = line.strip().split(",")
                 if row[0] == cuil:
                     return row[2]
-                
+
 def requestEvent():
     tipo = seleccionarTiposEvent()
     zona = getZone()
@@ -86,6 +86,3 @@ def requestEvent():
             event_data.append(people.strip())
         data_writer = writer(reqs, lineterminator='\r')
         data_writer.writerow(event_data)
-    
-        
-

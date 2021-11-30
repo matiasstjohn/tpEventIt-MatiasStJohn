@@ -1,9 +1,10 @@
 from Menu.home_usuarios import intUser
 
+
 class UserMenu:
 
     def User_mainMenu(self):
-        print(f'\n\n\n\nWelcome to EventIt, {intUser.currentUser}')
+        print(f'\n\nWelcome to EventIt, {intUser.currentUser}')
         running = True
         while running:
             try:
@@ -19,15 +20,14 @@ class UserMenu:
                 else:
                     raise ValueError
             except ValueError:
-                print('Please enter a valid number.')
-
+                print('Please enter a valid number.\n')
 
     def User_eventMenu(self):
         print(f'\n\nEvent menu.')
         running = True
         while running:
             try:
-                print('\n\nPlease select an action: \n1.- Report Event \n2.- Return to main menu')
+                print('\nPlease select an action: \n1.-Report Event \n2.-Return to main menu')
                 menu_input = input('Enter a menu number: ')
                 if menu_input == '1':
                     intUser.reportEvent()
@@ -37,14 +37,15 @@ class UserMenu:
                 else:
                     raise ValueError
             except ValueError:
-                print('Please enter a valid number.')
+                print('Please enter a valid number.\n')
 
     def User_contactMenu(self):
         print(f'\n\nContact menu.')
         running = True
         while running:
             try:
-                print('\n\nPlease select an action: \n1.- Enviar solicitud \n2.- Ver solicitudes \n3.- Return to main menu')
+                print(
+                    '\nPlease select an action: \n1.-Enviar solicitud \n2.-Ver solicitudes \n3.-Return to main menu')
                 menu_input = input('Enter a menu number: ')
                 if menu_input == '1':
                     intUser.contactoDeInteres()
@@ -55,11 +56,7 @@ class UserMenu:
                 else:
                     raise ValueError
             except ValueError:
-                print('Please enter a valid number.')
-
-
-
-
+                print('Please enter a valid number.\n')
 
 
 menu_user = UserMenu()
