@@ -15,7 +15,7 @@ class Sensor:
                     print(f"{i}.\tTipo: {row[0]}. Desc: {row[2]}. Cant de concurrentes: {len(row) - 3}")
                     i += 1
                     
-    def top3Zona(self):
+    def top3(self):
         with open('..\\Datasets\\Events_database.csv', 'r', newline='') as events:
             overall_values = []
             lista_final = []

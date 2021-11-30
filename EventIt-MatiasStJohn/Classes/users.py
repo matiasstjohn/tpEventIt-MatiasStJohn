@@ -1,16 +1,16 @@
 from abc import ABC
 
 
-class Usuario(ABC):
+class User(ABC):
     def __init__(self, username, password):
         self.password = password
         self.username = username
         self.notificaciones = []
 
 
-class Ciudadano(Usuario):
+class Citizen(User):
     def __init__(self, username, password, CUIL, telefono):
-        Usuario.__init__(self, username, password)
+        User.__init__(self, username, password)
         self.cuil = CUIL
         self.telefono = telefono
         self.friends = []

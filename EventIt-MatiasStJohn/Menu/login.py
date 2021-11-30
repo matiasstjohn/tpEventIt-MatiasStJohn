@@ -1,16 +1,15 @@
 from csv import writer
-from Classes.users import Ciudadano
+from Classes.users import Citizen
 from Classes.map import seleccionarZona
-from Menu.menu_admin import menu_admin
-from Menu.home_admins import intAdmin
+from Menu.menuadmin import menu_admin
+from Menu.homeadmins import intAdmin
 from Classes.event import seleccionarTiposEvent
 from Classes.sensor import Sensor
-from Menu.menu_sensor import senMenu
-from Menu.menu_users import menu_user
+from Menu.menusensor import senMenu
+from Menu.menuusers import menu_user
 
 
 class Start:
-
 
     def Register(self):
         cuil = Start.checkCuil(self)
@@ -18,7 +17,7 @@ class Start:
         username = Start.checkUsername(self)
         password = Start.checkPassword(self)
         with open('..\\Datasets\\User_database.csv', 'a', newline='') as user_database:
-            user = Ciudadano(username, password, cuil, phone_number)
+            user = Citizen(username, password, cuil, phone_number)
             user_data = [cuil, phone_number, user.username, user.password, 'Unblocked', '0']
             data_writer = writer(user_database, lineterminator='\r')
             data_writer.writerow(user_data)
